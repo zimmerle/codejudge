@@ -56,6 +56,13 @@
 				$contents = "";
 				while(!feof($socket))
 					$contents = $contents.fgets($socket);
+
+
+/* Race condition here, we are not expecting too many submissions anyway. */
+$current = file_get_contents("submission-logging.txt");
+$current .= "$_SESSION[username],$attempts,$status," . time() . "\n";
+file_put_contents("submission-logging.txt", $current);
+
 				if($status == 0) {
 					// oops! compile error
 					$query = "UPDATE solve SET status=1 WHERE (username='".$_SESSION['username']."' AND problem_id='".$_POST['id']."')";
