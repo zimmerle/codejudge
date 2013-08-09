@@ -40,14 +40,31 @@
 			if(trim($_POST['name']) == "")
 				header("Location: index.php?derror=1");
 			else {
-				list($day, $month, $year, $hour, $minute) = split('[/ :]', $_POST['start']);
+				//list($day, $month, $year, $hour, $minute) = split('[/ :]', $_POST['start']);
+
+				$day = 11;
+				$month = 02;
+				$year = 2012;
+				$hour = 01;
+				$minute = 12;
+
+
 				$start=mktime($hour, $minute,0, $month, $day, $year);
-				list($day, $month, $year, $hour, $minute) = split('[/ :]', $_POST['end']);
+				//list($day, $month, $year, $hour, $minute) = split('[/ :]', $_POST['end']);
+
+				$day = 11;
+				$month = 02;
+				$year = 2013;
+				$hour = 01;
+				$minute = 12;
+
+
 				$end=mktime($hour, $minute,0, $month, $day, $year);
 				if($_POST['c']=='on') $c=1; else $c=0;
 				if($_POST['cpp']=='on') $cpp=1; else $cpp=0;
 				if($_POST['java']=='on') $java=1; else $java=0;
-				if($_POST['python']=='on') $python=1; else $python=0;
+				#if($_POST['python']=='on') $python=1; else $python=0;
+				$python=0;
 				mysql_query("UPDATE prefs SET name='".mysql_real_escape_string($_POST['name'])."', start=$start, end=$end, c=$c, cpp=$cpp, java=$java, python=$python");
 				header("Location: index.php?changed=1");
 			}
