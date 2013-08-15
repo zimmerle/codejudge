@@ -13,11 +13,12 @@
 		include('header.php');
 		connectdb();
 ?>
-              <li><a href="index.php">Problems</a></li>
-              <li><a href="submissions.php">Submissions</a></li>
-              <li><a href="scoreboard.php">Scoreboard</a></li>
-              <li class="active"><a href="#">Account</a></li>
-              <li><a href="logout.php">Logout</a></li>
+              <li><a href="index.php">Problemas</a></li>
+              <li><a href="submissions.php">Submissões</a></li>
+              <li><a href="scoreboard.php">Quadro de resultados</a></li>
+              <li class="active"><a href="account.php">Conta</a></li>
+              <li><a href="logout.php">Sair</a></li>
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -33,26 +34,26 @@
         else if(isset($_GET['derror']))
           echo("<div class=\"alert alert-error\">\nPlease enter all the details asked before you can continue!\n</div>");
     ?>
-    Account settings for <?php echo($_SESSION['username']);?><hr/>
+    Configurações da Conta de usuário para: <?php echo($_SESSION['username']);?><hr/>
     	  <form method="post" action="update.php">
           <input type="hidden" name="action" value="password"/>
           <h1><small>Change Password</small></h1>
-          Old password: <input type="password" name="oldpass"/><br/>
-          New password: <input type="password" name="newpass"/><br/><br/>
-          <input class="btn" type="submit" name="submit" value="Change Password"/>
+          Antiga senha: <input type="password" name="oldpass"/><br/>
+          Nova senha: <input type="password" name="newpass"/><br/><br/>
+          <input class="btn" type="submit" name="submit" value="Mudar senha"/>
           </form>
           <hr/>
           
           <form method="post" action="update.php">
           <input type="hidden" name="action" value="email"/>
-          <h1><small>Change Email</small></h1>
+          <h1><small>Trocar E-mail</small></h1>
           <?php
           	$query = "SELECT email FROM users WHERE username='".$_SESSION['username']."'";
           	$result = mysql_query($query);
           	$fields = mysql_fetch_array($result);
           ?>
           Email: <input type="email" name="email" value="<?php echo $fields['email'];?>"/><br/><br/>
-          <input class="btn" type="submit" name="submit" value="Change Email"/>
+          <input class="btn" type="submit" name="submit" value="Trocar e-mail"/>
           </form>
     </div> <!-- /container -->
 

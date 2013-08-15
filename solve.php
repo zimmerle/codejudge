@@ -14,11 +14,11 @@
 		connectdb();
 ?>
 	<link rel="stylesheet" href="css/codemirror.css">
-              <li><a href="index.php">Problems</a></li>
-              <li><a href="submissions.php">Submissions</a></li>
-              <li><a href="scoreboard.php">Scoreboard</a></li>
-              <li><a href="account.php">Account</a></li>
-              <li><a href="logout.php">Logout</a></li>
+              <li><a href="index.php">Problemas</a></li>
+              <li><a href="submissions.php">Submissões</a></li>
+              <li><a href="scoreboard.php">Quadro de resultados</a></li>
+              <li><a href="account.php">Conta</a></li>
+              <li><a href="logout.php">Sair</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -53,7 +53,7 @@
 	if($accept['start']>time())
 	  header('location:index.php');
       ?>
-    <h1><small>Submit Solution</small></h1>
+    <h1><small>Submeter Solução</small></h1>
       <?php
         // display the problem statement
       	if(isset($_GET['id']) and is_numeric($_GET['id'])) {
@@ -65,7 +65,7 @@
 		echo("<hr/>\n<h1>".$row['name']."</h1>\n");
 		echo($out);
       ?>
-      <br/><span class="label label-info">Time Limit: <?php echo($row['time']/1000); ?> seconds</span>
+      <br/><span class="label label-info">Tempo limite: <?php echo($row['time']/1000); ?> segundos</span>
       <hr/>
       <?php
         // get the peviously submitted solution if exists
@@ -86,7 +86,7 @@
       <input type="hidden" name="lang" id="hlang" value="<?php if($num == 0) echo('c'); else echo($fields['lang']);?>"/>
       <div class="btn-group">
         <div id="blank"></div>
-        <a id="lang" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Language: 
+        <a id="lang" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Linguagem: 
         <?php
           if($num == 0) echo('C');
           else if($fields['lang']=='c') echo('C');
@@ -102,12 +102,12 @@
           <li><a href="#" onclick="changeLang('Python');changeSyntax('Python');">Python</a></li>
         </ul>
       </div>
-      <br/>Type your program below:<br/><br/>
-      <textarea style="font-family: mono; height:400px;" class="span9" name="soln" id="text"><?php if(!($num == 0)) echo($fields['soln']); else echo "// For Java users : Name your class 'Solution'";?></textarea><br/>
-      <?php if($accept['end'] > time() and $status['status'] == 1) echo("<input type=\"submit\" value=\"Run\" class=\"btn btn-primary btn-large\"/>");
-            else echo("<input type=\"submit\" value=\"Run\" class=\"btn disabled btn-large\" disabled=\"disabled\"/>");
+      <br/>Digite a sua solução abaixo:<br/><br/>
+      <textarea style="font-family: mono; height:400px;" class="span9" name="soln" id="text"><?php if(!($num == 0)) echo($fields['soln']); else echo "// Programando em Java? : Nomeie a sua classe 'Solution'";?></textarea><br/>
+      <?php if($accept['end'] > time() and $status['status'] == 1) echo("<input type=\"submit\" value=\"Rodar\" class=\"btn btn-primary btn-large\"/>");
+            else echo("<input type=\"submit\" value=\"Rodar\" class=\"btn disabled btn-large\" disabled=\"disabled\"/>");
       ?>
-      <span class="label label-info">You are allowed to use any of the following languages: 
+      <span class="label label-info">Você pode usar as seguintes linguages: 
       <?php $txt="";
         if($accept['c'] == 1) $txt = "C, ";
         if($accept['cpp'] == 1) $txt = $txt."C++, ";
@@ -125,7 +125,7 @@
     <script language="javascript">
       function changeLang(lang) {
         $('#lang').remove();
-        $('#blank').after('<a id="lang" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Language: ' + lang + ' <span class="caret"></span></a>');
+        $('#blank').after('<a id="lang" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Linguagem: ' + lang + ' <span class="caret"></span></a>');
         if(lang == 'C')
           $('#hlang').val('c');
         else if(lang== 'C++')

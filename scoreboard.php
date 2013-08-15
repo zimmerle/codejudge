@@ -13,11 +13,13 @@
 		include('header.php');
 		connectdb();
 ?>
-              <li><a href="index.php">Problems</a></li>
-              <li><a href="submissions.php">Submissions</a></li>
-              <li class="active"><a href="#">Scoreboard</a></li>
-              <li><a href="account.php">Account</a></li>
-              <li><a href="logout.php">Logout</a></li>
+              <li><a href="index.php">Problemas</a></li>
+              <li><a href="submissions.php">Submissões</a></li>
+              <li class="active"><a href="scoreboard.php">Quadro de resultados</a></li>
+              <li><a href="account.php">Conta</a></li>
+              <li><a href="logout.php">Sair</a></li>
+
+     
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -25,12 +27,12 @@
     </div>
 
     <div class="container">
-    The current standings of all the participants, the number of problems they have attempted and solved.
+As posições atuais de todos os participantes, o número de problemas que eles tentaram resolver.
     <table class="table table-striped">
       <thead><tr>
-        <th>Name</th>
-        <th>Solved</th>
-        <th>Attempted</th>
+        <th>Nome</th>
+        <th>Resolvido</th>
+        <th>Tentativas</th>
       </tr></thead>
       <tbody>
       <?php

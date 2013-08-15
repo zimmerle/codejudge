@@ -97,6 +97,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#"><?php echo(getName()); ?></a>
+	  <img style="float: right" src="img/cesar.png">
         </div>
       </div>
     </div>
@@ -115,23 +116,31 @@
         else if(isset($_GET['derror']))
           echo("<div class=\"alert alert-error\">\nPlease enter all the details asked before you can continue!\n</div>");
       ?>
+<BR><BR><BR>
       <h1><small>Login</small></h1>
-      <p>Please login to continue.</p><br/>
-      <form method="post" action="login.php">
-        <input type="hidden" name="action" value="login"/>
-        Username: <input type="text" name="username"/><br/>
-        Password: <input type="password" name="password"/><br/><br/>
-        <input class="btn" type="submit" name="submit" value="Login"/>
-      </form>
-      <hr/>
+<BR><BR>
+<table width=1000>
+<td valign=top>
       <form method="post" action="login.php">
         <input type="hidden" name="action" value="register"/>
-        <h1><small>New User? Register now</small></h1>
-        Username: <input type="text" name="username"/><br/>
-        Password: <input type="password" name="password"/><br/>
+        <h1><small>Ainda nao se registrou? Registre-se agora.</small></h1>
+        Usuário: <input type="text" name="username"/><br/>
+        Senha: <input type="password" name="password"/><br/>
         Email: <input type="email" name="email"/><br/><br/>
-        <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+        <input class="btn btn-primary" type="submit" name="submit" value="Registrar"/>
+	</form>
+</td><td valign=top>
+      <form method="post" action="login.php">
+        <input type="hidden" name="action" value="login"/>
+        <h1><small>Já é regsitrado? Seja bem-vindo.</small></h1>
+        Usuário: <input type="text" name="username"/><br/>
+        Senha: <input type="password" name="password"/><br/><br/>
+        <input class="btn" type="submit" name="submit" value="Login"/>
+      </form>
+
     </div> <!-- /container -->
+</td>
+</table>
 
 <?php
 	include('footer.php');

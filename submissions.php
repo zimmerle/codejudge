@@ -13,11 +13,12 @@
 		include('header.php');
 		connectdb();
 ?>
-              <li><a href="index.php">Problems</a></li>
-              <li class="active"><a href="#">Submissions</a></li>
-              <li><a href="scoreboard.php">Scoreboard</a></li>
-              <li><a href="account.php">Account</a></li>
-              <li><a href="logout.php">Logout</a></li>
+              <li><a href="index.php">Problemas</a></li>
+              <li class="active"><a href="submissions.php">Submissões</a></li>
+              <li><a href="scoreboard.php">Quadro de resultados</a></li>
+              <li><a href="account.php">Conta</a></li>
+              <li><a href="logout.php">Sair</a></li>
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -25,11 +26,11 @@
     </div>
 
     <div class="container">
-    Below is a list of submissions you have made. Click on any to edit it.
+Abaixo está uma lista de pedidos que você fez. Clique em qualquer um para editá-lo
     <table class="table table-striped">
       <thead><tr>
-        <th>Problem</th>
-        <th>Attempts</th>
+        <th>Problema</th>
+        <th>Tentativas</th>
         <th>Status</th>
       </tr></thead>
       <tbody>
@@ -44,9 +45,9 @@
        			$field = mysql_fetch_array($res);
 	       		echo("<tr><td><a href=\"solve.php?id=".$row['problem_id']."\">".$field['name']."</a></td><td><span class=\"badge badge-info\">".$row['attempts']);
        			if($row['status'] == 1)
-       				echo("</span></td><td><span class=\"label label-warning\">Attempted</span></td></tr>\n");
+       				echo("</span></td><td><span class=\"label label-warning\">Tentou</span></td></tr>\n");
        			else if($row['status'] == 2)
-       				echo("</span></td><td><span class=\"label label-success\">Solved</span></td></tr>\n");
+       				echo("</span></td><td><span class=\"label label-success\">Resolvido</span></td></tr>\n");
        		}
        	}
       ?>

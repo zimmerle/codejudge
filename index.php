@@ -13,11 +13,11 @@
 		include('header.php');
 		connectdb();
 ?>
-              <li class="active"><a href="#">Problems</a></li>
-              <li><a href="submissions.php">Submissions</a></li>
-              <li><a href="scoreboard.php">Scoreboard</a></li>
-              <li><a href="account.php">Account</a></li>
-              <li><a href="logout.php">Logout</a></li>
+              <li class="active"><a href="#">Problemas</a></li>
+              <li><a href="submissions.php">Submissões</a></li>
+              <li><a href="scoreboard.php">Quadro de resultados</a></li>
+              <li><a href="account.php">Conta</a></li>
+              <li><a href="logout.php">Sair</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -36,9 +36,9 @@
 	if($accept['start']>time())
 	  echo("<div class=\"alert alert-error\">\nThe contest has not started yet.\n</div>");
 	else{
-    echo"Below is a list of available problems for you to solve.<br/><br/>";
+    echo"Abaixo está uma lista de problemas disponíveis para você resolver.<br/><br/>";
       echo"<ul class=\"nav nav-list\">";
-        echo"<li class=\"nav-header\">AVAILABLE PROBLEMS</li>";
+        echo"<li class=\"nav-header\">PROBLEMAS DISPONÍVEIS</li>";
         	// list all the problems from the database
         	$query = "SELECT * FROM problems";
           	$result = mysql_query($query);
@@ -53,9 +53,9 @@
 				if(mysql_num_rows($res) !== 0) {
 					$r = mysql_fetch_array($res);
 					if($r['status'] == 1)
-						$tag = " <span class=\"label label-warning\">Attempted</span>";
+						$tag = " <span class=\"label label-warning\">Tentou</span>";
 					else if($r['status'] == 2)
-						$tag = " <span class=\"label label-success\">Solved</span>";
+						$tag = " <span class=\"label label-success\">Resolveu</span>";
 				}
 				if(isset($_GET['id']) and $_GET['id']==$row['sl']) {
 					$selected = $row;
@@ -84,7 +84,7 @@
         $result = mysql_query($query);
         $num = mysql_num_rows($result);
       ?>
-      <input class="btn btn-primary btn-large" type="submit" value="Solve"/> <span class="badge badge-info"><?php echo($num);?></span> have solved the problem.
+      <input class="btn btn-primary btn-large" type="submit" value="Resolver"/> <span class="badge badge-info"><?php echo($num);?></span> have solved the problem.
       </form>
       <?php
 	}
